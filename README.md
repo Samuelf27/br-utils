@@ -17,7 +17,7 @@ Zero dependências · Tipado em TypeScript · Tree-shakeable · ESM + CJS.
   <a href="https://samuelf27.github.io/br-utils/"><b>🔗 Demo interativo ao vivo</b></a>
 </p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/Samuelf27/br-utils/main/preview.png" alt="Preview do projeto" width="760" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Samuelf27/br-utils/main/preview.gif" alt="Preview do projeto" width="760" /></p>
 
 ---
 
