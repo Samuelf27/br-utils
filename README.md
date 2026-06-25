@@ -1,14 +1,14 @@
 <h1 align="center">🇧🇷 br-utils</h1>
 
 <p align="center">
-Utilitários de <b>validação</b> e <b>formatação</b> para o Brasil — CPF, CNPJ, CEP, telefone e moeda.<br>
+Utilitários de <b>validação</b> e <b>formatação</b> para o Brasil — CPF, CNPJ, CEP, telefone, moeda, PIS e cartão.<br>
 Zero dependências · Tipado em TypeScript · Tree-shakeable · ESM + CJS.
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript"/>
   <img src="https://github.com/Samuelf27/br-utils/actions/workflows/ci.yml/badge.svg" alt="CI"/>
-  <img src="https://img.shields.io/badge/tests-22%20passing-34d399?style=flat" alt="tests"/>
+  <img src="https://img.shields.io/badge/tests-30%20passing-34d399?style=flat" alt="tests"/>
   <img src="https://img.shields.io/badge/dependencies-0-blue?style=flat" alt="zero deps"/>
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="MIT"/>
 </p>
@@ -25,7 +25,7 @@ Zero dependências · Tipado em TypeScript · Tree-shakeable · ESM + CJS.
 
 - ✅ **Validação real** — algoritmos oficiais de dígitos verificadores de CPF e CNPJ
 - 🎭 **Formatação e máscaras** — saída pronta para exibir ao usuário
-- 🧪 **Testado** — 22 testes com [Vitest](https://vitest.dev) e CI no GitHub Actions
+- 🧪 **Testado** — 30 testes com [Vitest](https://vitest.dev) e CI no GitHub Actions
 - 📦 **Leve** — **zero dependências**, ESM + CJS, com *tree-shaking*
 - 🦺 **Tipado** — definições `.d.ts` incluídas
 
@@ -63,6 +63,12 @@ formatBRL(1234.5);               // 'R$ 1.234,50'
 | `formatPhone(phone)` | Formata `(00) 00000-0000` ou `(00) 0000-0000` |
 | `formatBRL(value)` | Formata número como `R$ 1.234,56` |
 | `parseBRL(value)` | Converte `'R$ 1.234,56'` → `1234.56` |
+| `isValidPIS(pis)` | Valida um PIS/PASEP (dígito verificador) |
+| `formatPIS(pis)` | Formata como `000.00000.00-0` |
+| `generatePIS(formatted?)` | Gera um PIS válido aleatório |
+| `isValidCreditCard(card)` | Valida cartão pelo algoritmo de Luhn |
+| `getCardBrand(card)` | Detecta a bandeira (Visa, Mastercard, Amex...) |
+| `formatCreditCard(card)` | Formata em grupos (`4111 1111 1111 1111`) |
 | `onlyDigits(str)` | Remove tudo que não for dígito |
 
 > Todas as funções aceitam entradas **com ou sem máscara**.

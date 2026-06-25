@@ -46,7 +46,7 @@
       <p class="sub">Validação e formatação para o Brasil — CPF, CNPJ, CEP, telefone e moeda. Zero dependências, tipado e tree-shakeable.</p>
       <div class="badges">
         <img src="https://img.shields.io/badge/TypeScript-3178c6?logo=typescript&logoColor=white" alt="TS" />
-        <img src="https://img.shields.io/badge/tests-22%20passing-34d399" alt="tests" />
+        <img src="https://img.shields.io/badge/tests-30%20passing-34d399" alt="tests" />
         <img src="https://img.shields.io/badge/deps-0-blue" alt="zero deps" />
         <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT" />
       </div>
@@ -89,6 +89,21 @@
         <div class="row"><input id="brl" placeholder="Digite um valor (ex.: 1234.56)..." /></div>
         <div class="out" id="brlOut"></div>
       </div>
+
+      <div class="card">
+        <h2>👷 PIS/PASEP</h2>
+        <div class="row">
+          <input id="pis" placeholder="Digite um PIS..." />
+          <button class="btn" data-gen="pis">Gerar válido</button>
+        </div>
+        <div class="out" id="pisOut"></div>
+      </div>
+
+      <div class="card">
+        <h2>💳 Cartão de crédito</h2>
+        <div class="row"><input id="card" placeholder="Digite um número de cartão..." /></div>
+        <div class="out" id="cardOut"></div>
+      </div>
     </div>
 
     <footer class="foot">
@@ -120,6 +135,20 @@
     bindDoc('cnpj', 'cnpjOut', U.isValidCNPJ, U.formatCNPJ);
     bindDoc('cep', 'cepOut', U.isValidCEP, U.formatCEP);
     bindDoc('phone', 'phoneOut', U.isValidPhone, U.formatPhone);
+    bindDoc('pis', 'pisOut', U.isValidPIS, U.formatPIS);
+
+    // Cartão de crédito (valida + detecta bandeira)
+    $('card').addEventListener('input', (e) => {
+      const v = e.target.value.trim();
+      const out = $('cardOut');
+      if (!v) { out.innerHTML = ''; return; }
+      const valid = U.isValidCreditCard(v);
+      const brand = U.getCardBrand(v);
+      let html = valid ? pill('✓ Válido (Luhn)', 'ok') : pill('✗ Inválido', 'err');
+      if (brand) html += pill('bandeira: ' + brand, 'info');
+      if (valid) html += pill(U.formatCreditCard(v), 'info');
+      out.innerHTML = html;
+    });
 
     // Moeda
     $('brl').addEventListener('input', (e) => {
@@ -135,7 +164,7 @@
     document.querySelectorAll('[data-gen]').forEach(btn => {
       btn.addEventListener('click', () => {
         const t = btn.dataset.gen;
-        const val = t === 'cpf' ? U.generateCPF() : U.generateCNPJ();
+        const val = t === 'cpf' ? U.generateCPF() : t === 'pis' ? U.generatePIS() : U.generateCNPJ();
         $(t).value = val;
         $(t).dispatchEvent(new Event('input'));
       });
