@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Demo interativo da biblioteca br-utils: validação e formatação de CPF, CNPJ, CEP, telefone e moeda." />
+  <title>br-utils · Demo interativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0b1020;--card:#141a2e;--border:#ffffff14;--text:#eef1fa;--muted:#93a0bd;--ok:#34d399;--err:#f87171;--accent:#22d3ee;--brand:#3b82f6}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,sans-serif;background:radial-gradient(ellipse 80% 50% at 50% -10%,#1e3a8a55,transparent),var(--bg);color:var(--text);min-height:100vh;padding:40px 18px}
+    .wrap{max-width:760px;margin:0 auto}
+    .head{text-align:center;margin-bottom:36px}
+    .flag{font-size:2.6rem}
+    h1{font-size:2.2rem;font-weight:800;letter-spacing:-.02em;margin:6px 0}
+    h1 code{font-family:'JetBrains Mono',monospace;background:linear-gradient(120deg,#22d3ee,#3b82f6);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{color:var(--muted);max-width:520px;margin:0 auto}
+    .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+    .badges img{height:20px}
+    .grid{display:grid;gap:16px;margin-top:30px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
+    .card h2{font-size:1.05rem;display:flex;align-items:center;gap:8px;margin-bottom:14px}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    input{flex:1;min-width:160px;background:#0b1020;border:1px solid var(--border);border-radius:10px;color:var(--text);padding:12px 14px;font-size:1rem;font-family:'JetBrains Mono',monospace;outline:none;transition:border-color .2s}
+    input:focus{border-color:var(--accent)}
+    .btn{background:#1f2940;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:0 16px;cursor:pointer;font-weight:600;font-size:.9rem;transition:.2s}
+    .btn:hover{background:#283455}
+    .out{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;min-height:24px}
+    .pill{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:5px 12px;border-radius:20px;font-weight:600}
+    .pill--ok{background:#34d39920;color:var(--ok)}
+    .pill--err{background:#f8717120;color:var(--err)}
+    .pill--info{background:#22d3ee18;color:var(--accent)}
+    .label{color:var(--muted);font-size:.82rem}
+    .foot{text-align:center;color:var(--muted);font-size:.85rem;margin-top:36px;line-height:1.8}
+    .foot a{color:var(--accent)}
+    pre.install{background:#0b1020;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:.85rem;overflow-x:auto;color:#a5b4fc;margin-top:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="head">
+      <div class="flag">🇧🇷</div>
+      <h1><code>br-utils</code></h1>
+      <p class="sub">Validação e formatação para o Brasil — CPF, CNPJ, CEP, telefone e moeda. Zero dependências, tipado e tree-shakeable.</p>
+      <div class="badges">
+        <img src="https://img.shields.io/badge/TypeScript-3178c6?logo=typescript&logoColor=white" alt="TS" />
+        <img src="https://img.shields.io/badge/tests-22%20passing-34d399" alt="tests" />
+        <img src="https://img.shields.io/badge/deps-0-blue" alt="zero deps" />
+        <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT" />
+      </div>
+      <pre class="install">npm install @samuelf27/br-utils</pre>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>🪪 CPF</h2>
+        <div class="row">
+          <input id="cpf" placeholder="Digite um CPF..." />
+          <button class="btn" data-gen="cpf">Gerar válido</button>
+        </div>
+        <div class="out" id="cpfOut"></div>
+      </div>
+
+      <div class="card">
+        <h2>🏢 CNPJ</h2>
+        <div class="row">
+          <input id="cnpj" placeholder="Digite um CNPJ..." />
+          <button class="btn" data-gen="cnpj">Gerar válido</button>
+        </div>
+        <div class="out" id="cnpjOut"></div>
+      </div>
+
+      <div class="card">
+        <h2>📮 CEP</h2>
+        <div class="row"><input id="cep" placeholder="Digite um CEP..." /></div>
+        <div class="out" id="cepOut"></div>
+      </div>
+
+      <div class="card">
+        <h2>📞 Telefone</h2>
+        <div class="row"><input id="phone" placeholder="Digite um telefone..." /></div>
+        <div class="out" id="phoneOut"></div>
+      </div>
+
+      <div class="card">
+        <h2>💰 Moeda (BRL)</h2>
+        <div class="row"><input id="brl" placeholder="Digite um valor (ex.: 1234.56)..." /></div>
+        <div class="out" id="brlOut"></div>
+      </div>
+    </div>
+
+    <footer class="foot">
+      Biblioteca open-source · <a href="https://github.com/Samuelf27/br-utils" target="_blank" rel="noopener">Ver no GitHub</a><br>
+      por <a href="https://github.com/Samuelf27" target="_blank" rel="noopener">Samuel Ferreira</a>
+    </footer>
+  </div>
+
+  <script src="assets/index.global.js"></script>
+  <script>
+    const U = window.brUtils;
+    const $ = (id) => document.getElementById(id);
+    const pill = (txt, cls) => `<span class="pill pill--${cls}">${txt}</span>`;
+
+    function bindDoc(id, outId, validate, format) {
+      const input = $(id), out = $(outId);
+      const run = () => {
+        const v = input.value.trim();
+        if (!v) { out.innerHTML = ''; return; }
+        const valid = validate(v);
+        let html = valid ? pill('✓ Válido', 'ok') : pill('✗ Inválido', 'err');
+        if (valid && format) html += pill('formatado: ' + format(v), 'info');
+        out.innerHTML = html;
+      };
+      input.addEventListener('input', run);
+    }
+
+    bindDoc('cpf', 'cpfOut', U.isValidCPF, U.formatCPF);
+    bindDoc('cnpj', 'cnpjOut', U.isValidCNPJ, U.formatCNPJ);
+    bindDoc('cep', 'cepOut', U.isValidCEP, U.formatCEP);
+    bindDoc('phone', 'phoneOut', U.isValidPhone, U.formatPhone);
+
+    // Moeda
+    $('brl').addEventListener('input', (e) => {
+      const v = e.target.value.trim();
+      const out = $('brlOut');
+      if (!v) { out.innerHTML = ''; return; }
+      const n = Number(v.replace(',', '.'));
+      if (Number.isNaN(n)) { out.innerHTML = pill('valor numérico inválido', 'err'); return; }
+      out.innerHTML = pill('formatBRL → ' + U.formatBRL(n), 'info');
+    });
+
+    // Botões "gerar válido"
+    document.querySelectorAll('[data-gen]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const t = btn.dataset.gen;
+        const val = t === 'cpf' ? U.generateCPF() : U.generateCNPJ();
+        $(t).value = val;
+        $(t).dispatchEvent(new Event('input'));
+      });
+    });
+  </script>
+</body>
+</html>

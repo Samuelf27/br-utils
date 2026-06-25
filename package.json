@@ -1,0 +1,44 @@
+{
+  "name": "@samuelf27/br-utils",
+  "version": "1.0.0",
+  "description": "Utilitários de validação e formatação para o Brasil 🇧🇷 — CPF, CNPJ, CEP, telefone e moeda. Zero dependências, tipado e tree-shakeable.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "build:demo": "tsup src/index.ts --format iife --global-name brUtils --minify --no-dts --out-dir docs/assets",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "brasil", "validacao", "cpf", "cnpj", "cep", "telefone",
+    "currency", "real", "brl", "typescript", "utils"
+  ],
+  "author": "Samuel Ferreira",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samuelf27/br-utils.git"
+  },
+  "homepage": "https://samuelf27.github.io/br-utils/",
+  "bugs": { "url": "https://github.com/Samuelf27/br-utils/issues" },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  },
+  "publishConfig": { "access": "public" }
+}
