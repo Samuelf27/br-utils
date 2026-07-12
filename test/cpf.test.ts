@@ -20,6 +20,12 @@ describe('isValidCPF', () => {
     expect(isValidCPF('123')).toBe(false);
     expect(isValidCPF('')).toBe(false);
   });
+
+  it('não quebra com entrada não-string (coage com segurança)', () => {
+    expect(isValidCPF(52998224725 as unknown as string)).toBe(true);
+    expect(isValidCPF(null as unknown as string)).toBe(false);
+    expect(isValidCPF(undefined as unknown as string)).toBe(false);
+  });
 });
 
 describe('formatCPF', () => {

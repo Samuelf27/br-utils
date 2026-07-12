@@ -20,6 +20,12 @@ describe('Cartão de crédito', () => {
     expect(getCardBrand('0000000000000000')).toBe(null);
   });
 
+  it('prioriza Elo sobre Visa/Discover em BINs compartilhados', () => {
+    expect(getCardBrand('4011780000000000')).toBe('Elo'); // BIN 4011 (não Visa)
+    expect(getCardBrand('6550000000000000')).toBe('Elo'); // BIN 6550 (não Discover)
+    expect(getCardBrand('4111111111111111')).toBe('Visa'); // Visa comum permanece Visa
+  });
+
   it('formata em grupos', () => {
     expect(formatCreditCard('4111111111111111')).toBe('4111 1111 1111 1111');
     expect(formatCreditCard('378282246310005')).toBe('3782 822463 10005');

@@ -4,8 +4,8 @@
  * @example
  * onlyDigits('123.456.789-09') // '12345678909'
  */
-export function onlyDigits(value: string): string {
-  return (value ?? '').replace(/\D/g, '');
+export function onlyDigits(value: unknown): string {
+  return String(value ?? '').replace(/\D/g, '');
 }
 
 /**

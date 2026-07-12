@@ -23,6 +23,9 @@ describe('Telefone', () => {
     expect(isValidPhone('(00) 1234-5678')).toBe(false);
     expect(isValidPhone('11888887777')).toBe(false); // 11 dígitos sem 9
   });
+  it('rejeita fixo com primeiro dígito inválido', () => {
+    expect(isValidPhone('(11) 1234-5678')).toBe(false); // fixo deve começar com 2-5
+  });
   it('formata celular e fixo', () => {
     expect(formatPhone('11988887777')).toBe('(11) 98888-7777');
     expect(formatPhone('1130304040')).toBe('(11) 3030-4040');
@@ -40,6 +43,10 @@ describe('Moeda (BRL)', () => {
   it('lança erro para entrada inválida', () => {
     expect(() => parseBRL('abc')).toThrow();
     expect(() => formatBRL(NaN)).toThrow();
+  });
+  it('lança erro para entrada vazia ou só espaços', () => {
+    expect(() => parseBRL('')).toThrow();
+    expect(() => parseBRL('   ')).toThrow();
   });
 });
 

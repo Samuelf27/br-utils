@@ -4,14 +4,16 @@ import { onlyDigits } from './utils';
 export type CardBrand =
   | 'Visa' | 'Mastercard' | 'Amex' | 'Elo' | 'Hipercard' | 'Diners' | 'Discover' | null;
 
+// Bandeiras específicas (Elo, Hipercard) são testadas ANTES das genéricas
+// (Visa/Mastercard/Discover), pois compartilham BINs iniciados por 4, 5 ou 6.
 const BRANDS: { brand: Exclude<CardBrand, null>; re: RegExp }[] = [
-  { brand: 'Visa', re: /^4\d{12}(\d{3})?$/ },
-  { brand: 'Mastercard', re: /^(5[1-5]\d{4}|2(22[1-9]|2[3-9]\d|[3-6]\d{2}|7[01]\d|720)\d{10})\d*$/ },
   { brand: 'Amex', re: /^3[47]\d{13}$/ },
   { brand: 'Diners', re: /^3(0[0-5]|[68]\d)\d{11}$/ },
-  { brand: 'Discover', re: /^6(011|5\d{2})\d{12}$/ },
-  { brand: 'Hipercard', re: /^(606282\d{10}(\d{3})?|3841\d{15})$/ },
   { brand: 'Elo', re: /^(4011|4312|4389|5041|5066|5067|509\d|6277|6362|6363|650\d|6516|6550)\d+$/ },
+  { brand: 'Hipercard', re: /^(606282\d{10}(\d{3})?|3841\d{15})$/ },
+  { brand: 'Visa', re: /^4\d{12}(\d{3})?$/ },
+  { brand: 'Mastercard', re: /^(5[1-5]\d{4}|2(22[1-9]|2[3-9]\d|[3-6]\d{2}|7[01]\d|720)\d{10})\d*$/ },
+  { brand: 'Discover', re: /^6(011|5\d{2})\d{12}$/ },
 ];
 
 /**

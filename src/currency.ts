@@ -21,10 +21,11 @@ export function formatBRL(value: number): string {
  * parseBRL('1.000')       // 1000
  */
 export function parseBRL(value: string): number {
-  const clean = (value ?? '')
+  const clean = String(value ?? '')
     .replace(/\s|R\$| /g, '')
     .replace(/\./g, '')
     .replace(',', '.');
+  if (clean === '') throw new TypeError(`Valor inválido para parseBRL: "${value}"`);
   const n = Number(clean);
   if (Number.isNaN(n)) throw new TypeError(`Valor inválido para parseBRL: "${value}"`);
   return n;
