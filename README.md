@@ -32,13 +32,13 @@ Zero dependências · Tipado em TypeScript · Tree-shakeable · ESM + CJS.
 ## 📦 Instalação
 
 ```bash
-npm install @samuelf27/br-utils
+npm install @eusamuelf/br-utils
 ```
 
 ## 🚀 Uso
 
 ```ts
-import { isValidCPF, formatCPF, formatBRL, isValidPhone } from '@samuelf27/br-utils';
+import { isValidCPF, formatCPF, formatBRL, isValidPhone } from '@eusamuelf/br-utils';
 
 isValidCPF('529.982.247-25');   // true
 formatCPF('52998224725');       // '529.982.247-25'
