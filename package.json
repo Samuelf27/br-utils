@@ -1,7 +1,7 @@
 {
   "name": "@samuelf27/br-utils",
   "version": "1.1.0",
-  "description": "Utilitários de validação e formatação para o Brasil 🇧🇷 — CPF, CNPJ, CEP, telefone e moeda. Zero dependências, tipado e tree-shakeable.",
+  "description": "Utilitários de validação e formatação para o Brasil 🇧🇷 — CPF, CNPJ, CEP, telefone, moeda, PIS e cartão. Zero dependências, tipado e tree-shakeable.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

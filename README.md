@@ -8,7 +8,7 @@ Zero dependências · Tipado em TypeScript · Tree-shakeable · ESM + CJS.
 <p align="center">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript"/>
   <img src="https://github.com/Samuelf27/br-utils/actions/workflows/ci.yml/badge.svg" alt="CI"/>
-  <img src="https://img.shields.io/badge/tests-30%20passing-34d399?style=flat" alt="tests"/>
+  <img src="https://img.shields.io/badge/tests-34%20passing-34d399?style=flat" alt="tests"/>
   <img src="https://img.shields.io/badge/dependencies-0-blue?style=flat" alt="zero deps"/>
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="MIT"/>
 </p>
@@ -25,7 +25,7 @@ Zero dependências · Tipado em TypeScript · Tree-shakeable · ESM + CJS.
 
 - ✅ **Validação real** — algoritmos oficiais de dígitos verificadores de CPF e CNPJ
 - 🎭 **Formatação e máscaras** — saída pronta para exibir ao usuário
-- 🧪 **Testado** — 30 testes com [Vitest](https://vitest.dev) e CI no GitHub Actions
+- 🧪 **Testado** — 34 testes com [Vitest](https://vitest.dev) e CI no GitHub Actions
 - 📦 **Leve** — **zero dependências**, ESM + CJS, com *tree-shaking*
 - 🦺 **Tipado** — definições `.d.ts` incluídas
 
@@ -70,6 +70,7 @@ formatBRL(1234.5);               // 'R$ 1.234,50'
 | `getCardBrand(card)` | Detecta a bandeira (Visa, Mastercard, Amex...) |
 | `formatCreditCard(card)` | Formata em grupos (`4111 1111 1111 1111`) |
 | `onlyDigits(str)` | Remove tudo que não for dígito |
+| `allSameDigits(str)` | Indica se todos os dígitos são iguais (ex.: `111.111.111-11`) |
 
 > Todas as funções aceitam entradas **com ou sem máscara**.
 
