@@ -92,6 +92,23 @@ npm version patch   # cria a tag
 git push --follow-tags
 ```
 
+## 🧪 Testes
+
+**34 testes** em 5 arquivos (Vitest), rodando no CI a cada push e pull request.
+
+| Arquivo | Cobre |
+|---|---|
+| `test/cpf.test.ts` | Dígitos verificadores, sequências repetidas, máscara e formatação — inclusive entrada não-string, coagida com segurança |
+| `test/cnpj.test.ts` | Validação com e sem máscara, DV incorreto, tamanhos inválidos |
+| `test/pis.test.ts` | PIS/PASEP: DV, sequências repetidas e formatação |
+| `test/card.test.ts` | Algoritmo de Luhn, detecção de bandeira e prioridade de Elo sobre Visa/Discover em BINs compartilhados |
+| `test/others.test.ts` | CEP, telefone (DDD, celular com 9, fixo) e moeda — tolerante ao tipo de espaço do `Intl` |
+
+```bash
+npm test           # roda a suíte
+npm run test:watch # modo watch
+```
+
 ## 📄 Licença
 
 [MIT](LICENSE) © Samuel Ferreira
