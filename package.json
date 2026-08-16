@@ -18,6 +18,7 @@
   ],
   "sideEffects": false,
   "scripts": {
+    "prepare": "npm run build",
     "build": "tsup",
     "build:demo": "tsup src/index.ts --format iife --global-name brUtils --minify --no-dts --out-dir docs/assets",
     "test": "vitest run",
