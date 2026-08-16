@@ -31,14 +31,23 @@ Zero dependências · Tipado em TypeScript · Tree-shakeable · ESM + CJS.
 
 ## 📦 Instalação
 
+> **Ainda não publicado no npm.** Por enquanto, use clonando o repositório:
+
 ```bash
-npm install @eusamuelf/br-utils
+git clone https://github.com/Samuelf27/br-utils.git
+cd br-utils && npm install && npm run build
+```
+
+Ou instale direto do GitHub:
+
+```bash
+npm install github:Samuelf27/br-utils
 ```
 
 ## 🚀 Uso
 
 ```ts
-import { isValidCPF, formatCPF, formatBRL, isValidPhone } from '@eusamuelf/br-utils';
+import { isValidCPF, formatCPF, formatBRL, isValidPhone } from 'br-utils';
 
 isValidCPF('529.982.247-25');   // true
 formatCPF('52998224725');       // '529.982.247-25'
