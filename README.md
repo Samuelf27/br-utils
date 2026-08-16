@@ -47,7 +47,7 @@ npm install github:Samuelf27/br-utils
 ## 🚀 Uso
 
 ```ts
-import { isValidCPF, formatCPF, formatBRL, isValidPhone } from 'br-utils';
+import { isValidCPF, formatCPF, formatBRL, isValidPhone } from '@eusamuelf/br-utils';
 
 isValidCPF('529.982.247-25');   // true
 formatCPF('52998224725');       // '529.982.247-25'
